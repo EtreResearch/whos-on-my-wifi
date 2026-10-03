@@ -1,3 +1,5 @@
+<img src="docs/icon.png" width="128" alt="">
+
 # Who's on My Wi-Fi
 
 A tiny Mac app that shows how many devices are on your Wi-Fi, and what they're called. No router login, no account, no tracking.
@@ -39,7 +41,7 @@ Please only scan networks you're allowed to use.
 sh test.sh          # run the checks
 sh build.sh         # build the app into build/
 sh build.sh --zip   # also make the release zip
-sh screenshots.sh   # redraw the README screenshots from made-up data
+sh screenshots.sh   # redraw the screenshots (made-up data) and the app icon
 ```
 
 Needs Apple's command-line tools (`xcode-select --install`). No other dependencies.
