@@ -170,7 +170,7 @@ struct Dashboard: View {
                         TableColumn("Device") { device in
                             VStack(alignment: .leading, spacing: 2) {
                                 Label(device.isLocal ? "This Mac" : device.name ?? "Unknown device",
-                                      systemImage: device.isLocal ? "laptopcomputer" : device.name == nil ? "questionmark.circle" : "iphone")
+                                      systemImage: device.isLocal ? "laptopcomputer" : device.name == nil ? "questionmark.circle" : "laptopcomputer.and.iphone")
                                 Text([device.ip, device.mac].compactMap { $0 }.joined(separator: " · "))
                                     .font(.caption.monospaced()).foregroundStyle(.secondary)
                             }

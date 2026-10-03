@@ -1,55 +1,48 @@
 # Who's on My Wi-Fi
 
-A tiny native Mac app that shows how many devices share the Wi-Fi you're connected to, what they're called, and when each one arrived. No router login, no account, nothing sent anywhere.
+A tiny Mac app that shows how many devices are on your Wi-Fi, and what they're called. No router login, no account, no tracking.
 
-## Download
+![Who's on My Wi-Fi showing 8 devices, a busy-hours chart and a device list](docs/screenshots/dashboard.png)
 
-1. Go to [Releases](../../releases/latest) and download `WhosOnMyWiFi.zip`.
-2. Unzip it and move **Who's on My Wi-Fi** to your Applications folder.
-3. Open it once. macOS will refuse ("Apple could not verify…"), because the app isn't paid-notarized by Apple; choose **Done**. Then open **System Settings → Privacy & Security**, scroll down, choose **Open Anyway**, enter your password and click **Open**. You only do this once.
-4. Allow **Local Network** access when asked. Without it the app can't see other devices.
+## Install
 
-Requires macOS 13 or later. Works on Apple Silicon and Intel Macs.
+1. Download **WhosOnMyWiFi.zip** from the [latest release](https://github.com/EtreResearch/whos-on-my-wifi/releases/latest) and unzip it.
+2. Open the app once. macOS will block it because it isn't from the App Store. Choose **Done**.
+3. Go to **System Settings → Privacy & Security**, click **Open Anyway**, enter your password, then click **Open**.
+4. Allow **Local Network** access when asked.
+
+macOS 13 or later, Apple Silicon or Intel.
 
 ## Use
 
-Join a Wi-Fi network (turn off any VPN) and open the app. It scans straight away and again every minute while it's open; **Refresh now** scans immediately.
+Join a Wi-Fi network (turn off any VPN) and open the app. It updates every minute.
 
-You'll see:
+- **The number** is how many devices answered, including your Mac. Treat it as a minimum: sleeping phones can be missed.
+- **Names** appear when a device shares one. Otherwise you'll see *Unknown device*.
+- **Big networks:** only the 1,024 addresses nearest you are scanned, and the app says so.
 
-- **Devices on your Wi-Fi right now**, including your own Mac. The router itself isn't counted.
-- **Busy hours**: the count over the last 24 hours.
-- **Devices**: each device's name when it announces one (for example "Priyas-iPhone"), otherwise **Unknown device**, with its IP and hardware (MAC) address and when it was first and last seen since the app opened.
+### Public Wi-Fi
 
-## What the count means
+Most cafés, airports and hotels stop devices from seeing each other. There you'll only see your own Mac, and the app tells you why.
 
-The count is the number of devices that answered. Treat it as a minimum:
-
-- Sleeping phones and devices that ignore pings can be missed.
-- Many phones hide their name and use a private, changing hardware address. A name is chosen by the device's owner and says nothing reliable about who they are.
-- **Big networks:** on networks with more than 1,024 addresses, the app scans only the 1,024 nearest your Mac and says so ("Scanned 1,024 of 65,534 addresses").
-- **Networks that hide devices:** most public Wi-Fi (cafés, airports, hotels) stops devices seeing each other. There the app shows only your Mac and tells you the network may be hiding devices. No app on a guest device can count those networks; only the network's owner can, from the router.
+![On public Wi-Fi only this Mac is visible](docs/screenshots/public-wifi.png)
 
 ## Privacy
 
-- Device names and addresses are kept in memory only and vanish when you quit.
-- Only the counts over time are saved, for 24 hours, in `~/Library/Application Support/Whos On My WiFi/history.json`.
-- The app only talks to devices on your local network: it pings them and asks your router for device names. It has no servers, accounts or tracking.
+Device names and addresses stay in memory and disappear when you quit. Only counts over time are saved, for 24 hours, on your Mac. The app talks only to devices on your local network.
 
-## Be considerate
-
-Only scan networks you're allowed to use. The app pings each address on the network once a minute, which some network owners don't welcome. Respect the rules of the network you're on.
+Please only scan networks you're allowed to use.
 
 ## Build from source
 
-Needs Apple's command-line tools (`xcode-select --install`). No third-party dependencies.
-
 ```sh
-sh test.sh            # run the checks
-sh build.sh           # build "build/Who's on My Wi-Fi.app" for Apple Silicon and Intel
-sh build.sh --zip     # also create build/WhosOnMyWiFi.zip for a release
-sh test.sh --live     # scan the network you're on from the terminal
+sh test.sh          # run the checks
+sh build.sh         # build the app into build/
+sh build.sh --zip   # also make the release zip
+sh screenshots.sh   # redraw the README screenshots from made-up data
 ```
+
+Needs Apple's command-line tools (`xcode-select --install`). No other dependencies.
 
 ## License
 

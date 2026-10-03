@@ -6,8 +6,8 @@
     <key>CFBundleIdentifier</key><string>io.github.etreresearch.whos-on-my-wifi</string>
     <key>CFBundleName</key><string>Who&apos;s on My Wi-Fi</string>
     <key>CFBundlePackageType</key><string>APPL</string>
-    <key>CFBundleVersion</key><string>1</string>
-    <key>CFBundleShortVersionString</key><string>1.0.0</string>
+    <key>CFBundleVersion</key><string>2</string>
+    <key>CFBundleShortVersionString</key><string>1.0.1</string>
     <key>LSMinimumSystemVersion</key><string>13.0</string>
     <key>NSLocalNetworkUsageDescription</key><string>Discover responding devices on the Wi-Fi network you choose to scan.</string>
 </dict>
